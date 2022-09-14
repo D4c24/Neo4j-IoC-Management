@@ -8,3 +8,10 @@ https://github.com/neo4j/neo4j-python-driver
 https://neo4j.com/docs/api/python-driver/current/#quick-example
 
 you can use cypher to perform queries and get data.
+
+References:
+https://observablehq.com/@d3/force-directed-graph
+https://tableplus.com/
+https://py2neo.org/2021.1/index.html
+https://stackoverflow.com/questions/55948330/storing-and-querying-python-ipaddress-data-type-in-neo4j
+https://blog.davidvassallo.me/2014/08/03/getting-started-with-neo4j-and-security-data-analysis/
