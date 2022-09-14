@@ -1,0 +1,33 @@
+Test1 - Adding data withouth so many attributes
+
+LOAD CSV WITH HEADERS FROM "file:///Dataset-Version3-test1.csv" AS line
+WITH line
+MERGE (Source:IP {address:line.SrcIP})
+MERGE (Destination:IP {address:line.DestIP})
+CREATE (Source)-[:connect_to {
+    `attack`:line.Threat,
+    `dest_port`:line.DestPort}]->(Destination)
+
+
+########### Getting Everything	
+MATCH (n1)-[r]->(n2)
+RETURN n1,r,n2
+
+########## Find Attack from source a to destination B
+MATCH (s)-[r]->(d)
+WHERE s.address="68.67.178.197" AND d.address="10.200.7.217"
+RETURN s,r,d
+
+MATCH (s:IP{address:"68.67.178.197"})-[r]->(d)
+RETURN s,r,d
+
+###########  Find Sources for SSH attacks
+MATCH (s)-[r]->(d)
+WHERE r.dest_port="22"
+RETURN s,r,d
+
+########## who used attack id 78, return only distinct attackers
+START n=node(78)
+MATCH (a)-[r]->(n)
+RETURN DISTINCT(a),n
+LIMIT 500
